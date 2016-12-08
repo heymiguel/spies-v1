@@ -6,10 +6,6 @@ var PlayerSchema = new mongoose.Schema({
     ref: 'User'
     // required: true
   },
-  characters:{
-    type: [CharacterSchema],
-    default:[]
-  }
   //get one to show first then you can adapt to make many?
 
 });

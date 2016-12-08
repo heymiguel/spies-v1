@@ -8,7 +8,7 @@ exports.index = function(req, res, next) {
 
 exports.show = function(req, res) {
   Character.findById(req.params.id)
-  .then((Character) => res.send(character))
+  .then((character) => res.send(character))
   .catch((err) => res.send(404))
 }
 
@@ -29,7 +29,6 @@ exports.update = function(req, res) {
     character.class = req.body.class;
     character.rank = req.body.rank;
     character.faction = req.body.faction;
-    character.user = req.body.user;
 
     character.save()
     .then((character)=>{

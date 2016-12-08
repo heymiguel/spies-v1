@@ -36,9 +36,9 @@ var App = React.createClass({
     $.get('/api/character', (data) => this.setState({characters: data}));
   },
 
-  componentDidMount: function() {
-    this.refresh();
-  }
+  // componentDidMount: function() {
+  //   this.refresh();
+  // }
 });
 
 module.exports = App;
