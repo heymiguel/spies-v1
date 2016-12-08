@@ -1,0 +1,24 @@
+todo:
+setup spies db (looks to be done)
+create schema
+test schema
+models?
+
+
+
+Questions for tues
+how to break up the app? (show char sheet)
+sending multiple schema
+bind a set of stats to one user
+- enable authentication
+
+
+
+
+----
+
+a player has one or many character sheets.
+a character sheet is comprised of stats, skills, gear
+do I want to put a thing that displays their stuff?
+OMG it needs to save notes
+shiiit
