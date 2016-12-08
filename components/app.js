@@ -17,7 +17,7 @@ var App = React.createClass({
     return  <div>
       <Header />
       { React.cloneElement(this.props.children, {
-        posts: this.state.posts,
+        characters: this.state.characters,
         onRefresh: this.refresh
       })}
     </div>

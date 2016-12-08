@@ -55,11 +55,9 @@ var Login = React.createClass({
       contentType: "application/json; charset=utf-8",
       success: (user) => {
         this.props.onLogin(user);
-        console.log("!! login");
       },
       error: (err) => {
         this.setState({ error: "We couldn't log you in with those credentials." });
-        console.log(err);
       }
     })
   },

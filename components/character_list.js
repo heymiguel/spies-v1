@@ -5,18 +5,30 @@ var CharList = React.createClass({
   render: function() {
     return  <div>
       <div className='brand'>
-        { this.props.character.map((character) =>
-          <Character key={ character._id }
-                id={ character._id }
-                callsign={ character.callsign }
-                age={ character.age }
-                height={ character.height }
-                ethnicity={ character.ethnicity }
-                rank={ character.rank }
-                class={ character.class }
-                faction={ character.faction }
-                user={ character.user } />
-        )}
+        { this.props.characters == undefined ?
+            <Character key={ "default" }
+                  id={ "default"}
+                  callsign={ "default"}
+                  age={ "default"}
+                  height={ "default"}
+                  ethnicity={ "default"}
+                  rank={ "default"}
+                  class={ "default"}
+                  faction={ "default"}
+                  user={ "default"} /> :
+             this.props.characters.map((character) =>
+                 <Character key={ character._id }
+                 id={ character._id }
+                 callsign={ character.callsign }
+                 age={ character.age }
+                 height={ character.height }
+                 ethnicity={ character.ethnicity }
+                 rank={ character.rank }
+                 class={ character.class }
+                 faction={ character.faction }
+                 user={ character.user } />)
+          }
+
       </div>
     </div>
   }
