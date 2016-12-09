@@ -1,5 +1,5 @@
 import React from 'react';
-import character from './character';
+import Character from './character';
 
 var CharList = React.createClass({
   render: function() {
@@ -16,17 +16,18 @@ var CharList = React.createClass({
                   class={ "default"}
                   faction={ "default"}
                   user={ "default"} /> :
-             this.props.characters.map((character) =>
-                 <Character key={ character._id }
-                 id={ character._id }
-                 callsign={ character.callsign }
-                 age={ character.age }
-                 height={ character.height }
-                 ethnicity={ character.ethnicity }
-                 rank={ character.rank }
-                 class={ character.class }
-                 faction={ character.faction }
-                 user={ character.user } />)
+             this.props.characters.map((characters) =>
+                 <Character key={ characters._id }
+                 id={ characters._id }
+                 name={ characters.name }
+                 callsign={ characters.callsign }
+                 age={ characters.age }
+                 height={ characters.height }
+                 ethnicity={ characters.ethnicity }
+                 rank={ characters.rank }
+                 class={ characters.class }
+                 faction={ characters.faction }
+                 user={ characters.user } />)
           }
 
       </div>

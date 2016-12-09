@@ -19,9 +19,15 @@ exports.update = function(req, res) {
   // Implement your update logic here
   Character.findById(req.params.id)
   .then((character)=>{
+    // required fields?
+
+  // required stuff
+    character.user = req.body.user;
+    character.name = req.body.name;
+    character.callsign = req.body.callsign;
+    // end required stuff
 
     // various character items go here
-    character.callsign = req.body.callsign;
     character.age = req.body.age;
     character.height = req.body.height;
     character.weight = req.body.weight;
@@ -45,18 +51,28 @@ exports.update = function(req, res) {
 }
 
 exports.create = function(req, res) {
-  var Character = new Character();
+  var character = new Character();
   // Implement your create logic here. Create a new post with var post = new Post()
   // Remember to save!
+
+  // required stuff
+  character.user = req.body.user;
+  character.name = req.body.name;
   character.callsign = req.body.callsign;
-  character.age = req.body.age;
+  // end required stuff
+
+  // callsign is required!! <-- add this field maybe?
+
+  character.description.age = req.body.age;
   character.height = req.body.height;
   character.weight = req.body.weight;
   character.ethnicity = req.body.ethnicity;
   character.class = req.body.class;
   character.rank = req.body.rank;
   character.faction = req.body.faction;
-  character.user = req.body.user;
+
+
+  console.log(character + "!!");
 
   character.save()
   .then(function(character) {

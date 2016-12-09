@@ -6,7 +6,7 @@ var Character = React.createClass({
   render: function() {
     return  <div className={ styles.column } >
       <div className={ styles.post }>
-        <div>{ this.props.user }</div>
+        <div>{ this.props.name }</div>
         <div>{ this.props.callsign }</div>
         <div>{ this.props.age }</div>
         <div>{ this.props.height }</div>

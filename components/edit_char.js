@@ -11,6 +11,9 @@ var Field = ({ label, value, onChange, name }) => <div className={ styles.field 
 var EditChar = React.createClass({
   getInitialState: function() {
     var emptyChar = {
+      user:'',
+      name:'',
+      callsign:'',
       age: '',
       height: '',
       weight: '',
@@ -20,34 +23,38 @@ var EditChar = React.createClass({
       faction: ''
     }
     if (this.props.params.id) {
-      var character = this.props.chars.find((character) => character._id == this.props.params.id);
+      var character = this.props.character.find((character) => character._id == this.props.params.id);
       return {
         isEditing: true,
-        character: character|| emptyChar
+        character: character || emptyChar
       }
     } else {
       return {
         isEditing: false,
-        character: emptyPost
+        character: emptyChar
       }
     }
   },
 
   render: function() {
     return  <div className={ styles.editor }>
-      <Field label="Age" value={ this.state.character.age } name='title' onChange={ this.updateField } />
-      <Field label="height" value={ this.state.character.height } name='description' onChange={ this.updateField } />
-      <Field label="Weight" value={ this.state.character.weight } name='image' onChange={ this.updateField } />
-      <Field label="ethnicity" value={ this.state.character.ethnicity } name='location' onChange={ this.updateField } />
-      <Field label="class" value={ this.state.character.class } name='user' onChange={ this.updateField } />
-      <Field label="rank" value={ this.state.character.rank } name='user' onChange={ this.updateField } />
-      <Field label="faction" value={ this.state.character.faction } name='user' onChange={ this.updateField } />
+      <Field label="User" value={ this.state.character.user } name='user' onChange={ this.updateField } />
+      <Field label="name" value={ this.state.character.name } name='name' onChange={ this.updateField } />
+      <Field label="callsign" value={ this.state.character.callsign } name='callsign' onChange={ this.updateField } />
+      <Field label="Age" value={ this.state.character.age } name='age' onChange={ this.updateField } />
+      <Field label="height" value={ this.state.character.height } name='height' onChange={ this.updateField } />
+      <Field label="Weight" value={ this.state.character.weight } name='weight' onChange={ this.updateField } />
+      <Field label="ethnicity" value={ this.state.character.ethnicity } name='ethnicity' onChange={ this.updateField } />
+      <Field label="class" value={ this.state.character.class } name='class' onChange={ this.updateField } />
+      <Field label="rank" value={ this.state.character.rank } name='rank' onChange={ this.updateField } />
+      <Field label="faction" value={ this.state.character.faction } name='faction' onChange={ this.updateField } />
       <button onClick={ this.save }>Save</button>
     </div>
   },
 
   save: function() {
     if (this.state.isEditing) {
+      console.log(this.props.params.id);
       var url = '/api/character/' + this.props.params.id;
       var method = 'PUT';
     } else {
@@ -59,17 +66,22 @@ var EditChar = React.createClass({
       method: method,
       url: url,
       contentType: "application/json; charset=utf-8",
-      data: JSON.stringify(this.state.post),
+      data: JSON.stringify(this.state.character),
       success: () => {
+        console.log(this.state.character);
         this.props.onRefresh();
         browserHistory.push('/');
+        console.log("success!");
+      },
+      error: (err) => {
+        console.log(err);
       }
     });
   },
 
   updateField: function(evt) {
     var character = this.state.character;
-    post[evt.target.name] = evt.target.value;
+    character[evt.target.name] = evt.target.value;
     this.setState({character: character});
   }
 });

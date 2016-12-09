@@ -6,6 +6,10 @@ var PlayerSchema = new mongoose.Schema({
     ref: 'User'
     // required: true
   },
+  isPlaying:{
+    type: [CharacterSchema],
+    default: []
+  }
   //get one to show first then you can adapt to make many?
 
 });
@@ -18,10 +22,6 @@ var CharacterSchema = new mongoose.Schema({
   callsign: {
     type: String,
     required: true
-  },
-  playedBy: {
-    type: [PlayerSchema],
-    default: []
   },
   description: {
    type:  [DescriptionSchema],
